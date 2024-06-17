@@ -14,6 +14,7 @@ class DialectItemWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 4, bottom: 4, left: 8, right: 8),
       child: Card(
+        elevation: 3,
         color: Colors.red.shade100,
         child: Padding(
           padding: const EdgeInsets.all(8.0),

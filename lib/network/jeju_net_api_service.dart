@@ -2,8 +2,6 @@ import 'package:dio/dio.dart';
 import 'package:retrofit/http.dart';
 import 'package:retrofit/retrofit.dart';
 
-import '../model/data_type1.dart';
-
 // part 'jeju_net_api_service.g.dart';
 //
 // @RestApi(baseUrl: "https://www.jeju.go.kr/rest")

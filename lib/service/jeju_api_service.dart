@@ -4,6 +4,7 @@ import 'package:http/http.dart';
 import 'package:jeju_language/model/dialect.dart';
 import 'package:xml2json/xml2json.dart';
 
+import '../model/adage.dart';
 import '../model/life_dialect.dart';
 
 class JejuApiService {
@@ -36,11 +37,24 @@ class JejuApiService {
       xml2json.parse(xml);
       String parker = xml2json.toParker();
 
-      print('parker : $parker');
-
       return LifeDialect.fromJson(json.decode(parker));
     }
     throw Exception("");
   }
 
+  Future<Adage> fetchAdageDialectList(int page, int size) async {
+    Uri uri = Uri.parse(
+        '$base_url/JejuAdageService/getJejuAdageServiceList?authApiKey=&startPage=$page&pageSize=$size');
+    final response = await get(uri);
+    if (response.statusCode == 200) {
+      String xml = utf8.decode(response.bodyBytes);
+
+      Xml2Json xml2json = Xml2Json();
+      xml2json.parse(xml);
+      String parker = xml2json.toParker();
+
+      return Adage.fromJson(json.decode(parker));
+    }
+    throw Exception("");
+  }
 }

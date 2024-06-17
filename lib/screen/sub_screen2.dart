@@ -22,7 +22,6 @@ class _SubScreen2State extends State<SubScreen2> {
   bool _hasMoreData = true;
 
   Future<void> _fetchDialectList() async {
-    print('fetchDialectList');
     if (_isLoading || !_hasMoreData) return;
     setState(() {
       _isLoading = true;
@@ -36,7 +35,6 @@ class _SubScreen2State extends State<SubScreen2> {
         if (dialect.dialectList.length < _size) {
           _hasMoreData = false;
         }
-        dialect.dialectList.forEach((items) => print(items.contents));
       });
     } catch (e) {
       print('error : $e');
@@ -45,7 +43,6 @@ class _SubScreen2State extends State<SubScreen2> {
     } finally {
       _isLoading = false;
     }
-    print('page : $_page');
   }
 
   @override

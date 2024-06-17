@@ -10,7 +10,7 @@ class SubScreen1 extends StatefulWidget {
   State<SubScreen1> createState() => _SubScreen1State();
 }
 
-class _SubScreen1State extends State<SubScreen1> with AutomaticKeepAliveClientMixin<SubScreen1> {
+class _SubScreen1State extends State<SubScreen1> {
   final JejuApiService jejuApiService = JejuApiService();
   final ScrollController _scrollController = ScrollController();
 
@@ -21,7 +21,6 @@ class _SubScreen1State extends State<SubScreen1> with AutomaticKeepAliveClientMi
   bool _hasMoreData = true;
 
   Future<void> _fetchDialectList() async {
-    print('fetchDialectList');
     if (_isLoading || !_hasMoreData) return;
     setState(() {
       _isLoading = true;
@@ -35,7 +34,6 @@ class _SubScreen1State extends State<SubScreen1> with AutomaticKeepAliveClientMi
         if (dialect.dialectList.length < _size) {
           _hasMoreData = false;
         }
-        dialect.dialectList.forEach((items) => print(items.contents));
       });
     } catch (e) {
       print('error : $e');
@@ -44,7 +42,6 @@ class _SubScreen1State extends State<SubScreen1> with AutomaticKeepAliveClientMi
     } finally {
       _isLoading = false;
     }
-    print('page : $_page');
   }
 
   @override
@@ -66,11 +63,7 @@ class _SubScreen1State extends State<SubScreen1> with AutomaticKeepAliveClientMi
   }
 
   @override
-  bool get wantKeepAlive => true;
-
-  @override
   Widget build(BuildContext context) {
-    super.build(context);
     return _bodyWidget();
   }
 

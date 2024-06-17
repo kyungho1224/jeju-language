@@ -23,6 +23,7 @@ class LifeDialectDetailScreen extends StatelessWidget {
           padding: const EdgeInsets.all(16.0),
           child: Center(
             child: Card(
+              elevation: 3,
               color: Colors.teal.shade100,
               child: Padding(
                 padding: const EdgeInsets.all(18.0),
